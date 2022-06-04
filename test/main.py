@@ -1,15 +1,25 @@
-from test_agent import *
 
 class TestWolf:
-
     
     def __init__(self):
         #ゲームのデータ管理をインスタンス変数にて行う
         #ゲームの日数
         self.dayCount = 0
-    
+        self.agentCount = 3
+        self.voteResult = [] #インデックス = ゲームの日数
+        self.agentMembers = [] #インデックス = エージェントの番号
+        self.agentRole = [] #インデックス = エージェントの番号
+        self.devinevoteResult = [] #インデックス = ゲームの日数
+        self.devineResult = [] #インデックス = エージェントの番号
+        self.wisperResult = [] #インデックス = 
+        self.guardvoteResult = []
+        
     def initialize(self):
-        pass
+        #エージェントの初期化（生存 = 1, 死亡or追放 = 0）
+        for x in range(self.agentCount):
+            self.agentMembers[x] = 1
+            
+        #占いの
         
     def dayStart(self):
         #一日の開始宣言
@@ -29,10 +39,53 @@ class TestWolf:
         #占い先の決定
         #人狼の釣り先決定
         #狩人の守り先決定
-        #噛み先決定
         pass
+    
+    def inputVote(self, selfNumber):
+        print("投票先一覧")
+        for x in self.agentMembers:
+            if x == selfNumber:
+                continue
+            print("エージェント"+x)            
+        self.voteList.append(input("投票先エージェントを入力してください\nエージェント")) 
 
+    def inputDevine(self, selfNumber):
+        print("占い先一覧")
+        for x in self.agentMembers:
+            if x == selfNumber:
+                continue
+            print("エージェント"+x)
+        self.devinvoteResult.append(input("占い先エージェントを入力してください\nエージェント")) 
 
+    def inputWhisper(self, selfNumber):
+        print("噛み先一覧")
+        for x in self.agentMembers:
+            if x == selfNumber:
+                continue
+            print("エージェント"+x)
+        self.whisperResult.append(input("噛み先エージェントを入力してください\nエージェント"))
+    
+    def inputGuard(self, selfNumber):
+        print("守り先一覧")
+        for x in self.agentMembers:
+            if x == selfNumber:
+                continue
+            print("エージェント"+x)
+        self.guardvoteResult.append(input("守り先エージェントを入力してください\nエージェント"))
+
+    def devine(self):
+        if self.devinevoteResult[self.dayCount] == 
+            
+        
+        
+    def execute(self):
+        
+        
+    def attack(self):
+        print("噛み実行")
+        if self.whisperResult[dayCount] != NULL:
+        
+    def 
 
 if __name__ == "__main__":
     test = TestWolf()
