@@ -13,17 +13,19 @@ class TestWolf:
         self.devineResult = [] #インデックス = エージェントの番号
         self.wisperResult = [] #インデックス = 
         self.guardvoteResult = []
+        self.devineResult = 0
+        self.devineJudge = 0
         
     def initialize(self):
-        #エージェントの初期化（生存 = 1, 死亡or追放 = 0）
-        for x in range(self.agentCount):
+        #エージェントの初期化（生存 = 1, 死亡 = 0, 追放 = 2）
+        for x in range(1,self.agentCount+1):
             self.agentMembers[x] = 1
             
         #占いの
         
     def dayStart(self):
         #一日の開始宣言
-        print(self.deyCount+"日目スタート")
+        print(self.dayCount+"日目スタート")
         
     def finish(self):
         #最終日の判定
@@ -50,12 +52,15 @@ class TestWolf:
         self.voteList.append(input("投票先エージェントを入力してください\nエージェント")) 
 
     def inputDevine(self, selfNumber):
-        print("占い先一覧")
-        for x in self.agentMembers:
-            if x == selfNumber:
-                continue
-            print("エージェント"+x)
-        self.devinvoteResult.append(input("占い先エージェントを入力してください\nエージェント")) 
+        self.devineJudge = input("占いを実行しますか？\n実行する場合: 1\n実行しない場合0\nを入力してください\n")
+        
+        if self.devineJudge == 1:
+            print("占い先一覧")
+            for x in self.agentMembers:
+                if x == selfNumber:
+                    continue
+                print("エージェント"+x)
+            self.devinvoteResult.append(input("占い先エージェントを入力してください\nエージェント")) 
 
     def inputWhisper(self, selfNumber):
         print("噛み先一覧")
@@ -74,18 +79,29 @@ class TestWolf:
         self.guardvoteResult.append(input("守り先エージェントを入力してください\nエージェント"))
 
     def devine(self):
-        if self.devinevoteResult[self.dayCount] == 
-            
+        #占い結果を返す
+        if self.devineJudge == 0:
+            print("占いが行われませんでした")
+            return
+        print("占い実行")
+        devineResult = self.agentRole[self.devinevoteResult[self.dayCount]]
+        return devineResult
         
         
     def execute(self):
+        print("追放実行")
+        
+        #追放
+        #追放するエージェント
+        executeAgent = self.voteResult[self.dayCount]
+        self.agentMembers[executeAgent] = 2
         
         
     def attack(self):
         print("噛み実行")
         if self.whisperResult[dayCount] != NULL:
         
-    def 
+    
 
 if __name__ == "__main__":
     test = TestWolf()
