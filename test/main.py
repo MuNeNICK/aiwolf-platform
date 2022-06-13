@@ -18,9 +18,9 @@ class wolfWolf:
         self.devineResult = [] #インデックス = エージェントの番号
         self.wisperResult = [] #インデックス = 
         self.guardvoteResult = []
-        self.devineResult = 0
-        self.devineJudge = 0
-        self.whisperResult = []
+        self.devineResult = 0 #占い結果
+        self.devineJudge = 0 #占い
+        self.whisperResult = [] #囁き（噛み先投票）の結果
         self.wolfCount = 0 #人狼の数
         self.humanCount = 0 #人間の数
         self.openAgent = [] #公開されるエージェント
@@ -34,9 +34,6 @@ class wolfWolf:
         for x in range(self.agentCount+1):
             self.agentMembers.append(1)
             self.humanList.append(1)
-        for x in range(self.agentCount+1):
-            self.agentMembers[x] = 1
-            self.humanList[x] = 1
         
         #データ初期化
         for x in range(self.agentCount+1):
@@ -44,9 +41,6 @@ class wolfWolf:
     
         for x in range(self.agentCount+1):
             self.openAgent.append(1)
-        
-        for x in range(self.agentCount+1):
-            self.openAgent[x] = 1
         
         for x in range(self.agentCount+1):
             self.voteResult.append(1)
@@ -184,7 +178,7 @@ class wolfWolf:
         #追放
         #追放するエージェント
         self.executeAgent = self.voteResult[self.dayCount]
-        self.agentMembers[self.executeAgent] = 2
+        self.agentMembers[self.executeAgent] = 0
         
         
     def attack(self):
