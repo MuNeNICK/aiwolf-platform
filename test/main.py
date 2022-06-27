@@ -38,6 +38,7 @@ class wolfWolf:
         #データ初期化
         for x in range(self.agentCount+1):
             self.voteAgents.append(0)
+            self.guardvoteResult.append(0)
     
         for x in range(self.agentCount+1):
             self.openAgent.append(1)
@@ -177,7 +178,7 @@ class wolfWolf:
         
         #追放
         #追放するエージェント
-        self.executeAgent = self.voteResult[self.dayCount]
+        self.executeAgent = self.voteResult[self.dayCount-1]
         self.agentMembers[self.executeAgent] = 0
         
         
@@ -199,7 +200,7 @@ if __name__ == "__main__":
     print("夜から始まるよ:]")
     wolf.nightPhase()
     print("人狼同士の囁き:[")
-    
+    wolf.inputWhisper(wolf.wolfList[0])
     """
     print("占い:>")
     wolf.inputDevine(wolf.devineList[0])
@@ -263,7 +264,7 @@ if __name__ == "__main__":
         
         #人狼の噛み先入力
         wolf.inputWhisper(wolf.wolfList[0])
-        
+        print(wolf.wisperResult)
         """
         #狩人の守り先入力
         wolf.inputGuard(wolf.guardList[0])
