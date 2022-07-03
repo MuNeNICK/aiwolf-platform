@@ -1,5 +1,5 @@
 import random
-#from asyncio.windows_events import NULL
+
 
 
 class wolfWolf:
@@ -59,7 +59,7 @@ class wolfWolf:
     
     def dayEnd(self):
         #一日の終了
-        print(str(self.dayCount)+"一日目の終了")
+        print(str(self.dayCount)+"日目の終了")
         self.dayCount += 1
         
     def finish(self):
@@ -125,7 +125,7 @@ class wolfWolf:
         print("投票先一覧")
         
         for x in range(1, self.agentCount+1):
-            if x == selfNumber:
+            if x == selfNumber or self.agentMembers[x] == 0:
                 continue
             print("エージェント"+str(x))            
         vote = int(input("投票先エージェントを入力してください\nエージェント"))
@@ -145,8 +145,8 @@ class wolfWolf:
 
     def inputWhisper(self, selfNumber):
         print("噛み先一覧")
-        for x in self.agentMembers:
-            if x == selfNumber:
+        for x in range(1, self.agentCount+1):
+            if x == selfNumber or self.agentMembers[x] == 0:
                 continue
             print("エージェント"+str(x))
         wisper = int(input("噛み先エージェントを入力してください\nエージェント"))
@@ -179,6 +179,7 @@ class wolfWolf:
         #追放
         #追放するエージェント
         self.executeAgent = self.voteResult[self.dayCount-1]
+        print("追放エージェント: "+str(self.executeAgent))
         self.agentMembers[self.executeAgent] = 0
         
         
@@ -190,7 +191,8 @@ class wolfWolf:
         
         if attackAgent != None:
             if attackAgent != self.guardvoteResult[self.dayCount]:
-                self.agentMembers[attackAgent] = 0         
+                self.agentMembers[attackAgent] = 0
+                print("エージェント"+str(attackAgent)+"が殺されました")         
 
 
 if __name__ == "__main__":
@@ -273,8 +275,9 @@ if __name__ == "__main__":
         #噛み実行
         wolf.attack()        
         
-
-        
+        #一日の終了
+        wolf.dayEnd()
+        print(wolf.agentMembers)
         
         #終了判定
         if wolf.finish() == 1:
