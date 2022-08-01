@@ -1,0 +1,12 @@
+javaファイルの動作環境はEclipse
+
+・LogdataToVector.java
+  ・参考書準拠で作成した教師データ作成用のプログラム
+  ・APIや専用のメソッドをダウンロードして使用している
+　・APIファイルがないと動かない
+・aiwolf_log.py
+  ・LogdataToVector.javaのpython版
+  ・単体で動く
+・Villager.java
+  ・参考書準拠で作成したlibSVMを使った人狼AI
+  ・APIファイルが必要
